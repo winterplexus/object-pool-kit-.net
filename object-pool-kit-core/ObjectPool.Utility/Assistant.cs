@@ -1,11 +1,13 @@
 ﻿//
 //  Assistant.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2021
+//  Copyright (c) Wiregrass Code Technology 2018-2022
 //
+using System;
 using System.Globalization;
 using System.Reflection;
 
+[assembly: CLSCompliant(true)]
 namespace ObjectPool.Utility
 {
     public static class Assistant

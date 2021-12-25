@@ -1,12 +1,13 @@
 ﻿//
 //  EventsLog.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2021
+//  Copyright (c) Wiregrass Code Technology 2018-2022
 //
 using System;
 using NLog;
 using ObjectPool.Utility;
 
+[assembly: CLSCompliant(true)]
 namespace ObjectPool.Log
 {
     public static class EventsLog
@@ -46,12 +47,12 @@ namespace ObjectPool.Log
 
         private static string ReplaceControlCharacters(string input)
         {
-            return string.IsNullOrEmpty(input) ? input : input.Replace(EscapeCharacters.Backspace, "").
-                                                               Replace(EscapeCharacters.FormFeed, " | ").
-                                                               Replace(EscapeCharacters.Linefeed, "").
-                                                               Replace(EscapeCharacters.CarriageReturn, "").
-                                                               Replace(EscapeCharacters.HorizontalTab, " ").
-                                                               Replace(EscapeCharacters.VerticalTab, " | ");
+            return string.IsNullOrEmpty(input) ? input : input.Replace(EscapeCharacters.Backspace, "", StringComparison.InvariantCulture).
+                                                               Replace(EscapeCharacters.FormFeed, " | ", StringComparison.InvariantCulture).
+                                                               Replace(EscapeCharacters.Linefeed, "", StringComparison.InvariantCulture).
+                                                               Replace(EscapeCharacters.CarriageReturn, "", StringComparison.InvariantCulture).
+                                                               Replace(EscapeCharacters.HorizontalTab, " ", StringComparison.InvariantCulture).
+                                                               Replace(EscapeCharacters.VerticalTab, " | ", StringComparison.InvariantCulture);
         }
     }
 }

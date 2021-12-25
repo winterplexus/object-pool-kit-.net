@@ -1,13 +1,14 @@
 ﻿//
 //  ObjectPoolManager.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2021
+//  Copyright (c) Wiregrass Code Technology 2018-2022
 //  
 using System;
 using System.Collections.Generic;
 using NLog;
 using ObjectPool.Log;
 
+[assembly: CLSCompliant(true)]
 namespace ObjectPool
 {
     public sealed class ObjectPoolManager
@@ -32,12 +33,9 @@ namespace ObjectPool
                 {
                     lock (objectPoolContainerManagerLock)
                     {
-                        if (objectPoolContainerManager == null)
-                        {
-                            objectPoolContainerManager = new ObjectPoolManager();
+                        objectPoolContainerManager = new ObjectPoolManager();
 
-                            ManagerLog.WriteManagerMessage("object pool container manager created", LogLevel.Info);
-                        }
+                        ManagerLog.WriteManagerMessage("object pool container manager created", LogLevel.Info);
                     }
                 }
                 return objectPoolContainerManager;
@@ -75,7 +73,7 @@ namespace ObjectPool
             }
         }
 
-        public List<ObjectPoolMember> PoolObjectsList => objectPoolContainer.ObjectsList;
+        public IReadOnlyCollection<ObjectPoolMember> PoolObjectsList => objectPoolContainer.ObjectsList;
 
         public void ReleasePoolObjects()
         {

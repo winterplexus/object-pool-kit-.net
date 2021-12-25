@@ -1,7 +1,7 @@
 ﻿//
 //  CommandOptionsParameters.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2021
 //                        
 namespace ObjectPool.Kit
 {

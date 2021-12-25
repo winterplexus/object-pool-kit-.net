@@ -1,12 +1,13 @@
 ﻿//
 //  EventsLog.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2021
+//  Copyright (c) Wiregrass Code Technology 2018-2022
 //
 using System;
 using NLog;
 using ObjectPool.Utility;
 
+[assembly: CLSCompliant(true)]
 namespace ObjectPool.Log
 {
     public static class EventsLog

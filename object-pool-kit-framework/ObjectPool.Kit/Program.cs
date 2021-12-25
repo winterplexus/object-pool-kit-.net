@@ -1,12 +1,13 @@
 ﻿//
 //  Program.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2021
+//  Copyright (c) Wiregrass Code Technology 2018-2022
 //   
 using System;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+
 
 namespace ObjectPool.Kit
 {

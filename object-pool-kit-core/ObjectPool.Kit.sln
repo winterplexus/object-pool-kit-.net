@@ -1,15 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectPool.Kit", "ObjectPool.Kit\ObjectPool.Kit.csproj", "{5C7D59CB-EE93-4EA5-9C67-82A0DB56E011}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectPool.Utility", "ObjectPool.Utility\ObjectPool.Utility.csproj", "{2BACF6F0-FF75-4BC1-AB4E-43D1ACC598AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectPool.Log", "ObjectPool.Log\ObjectPool.Log.csproj", "{C4C41FCC-0770-45BD-A676-0FDE3B302D53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectPool.Log", "ObjectPool.Log\ObjectPool.Log.csproj", "{C4C41FCC-0770-45BD-A676-0FDE3B302D53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectPool", "ObjectPool\ObjectPool.csproj", "{4E844E82-AAEC-4DE5-9406-73B59D0CB540}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectPool", "ObjectPool\ObjectPool.csproj", "{4E844E82-AAEC-4DE5-9406-73B59D0CB540}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0292F9EB-E085-449C-8E84-39BD8EB49663}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

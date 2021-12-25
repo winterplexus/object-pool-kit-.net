@@ -1,7 +1,7 @@
 ﻿//
 //  DisposablePoolMember.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2022
 //  
 using System;
 

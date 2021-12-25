@@ -1,7 +1,7 @@
 ﻿//
 //  ObjectPoolContainer.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2021
+//  Copyright (c) Wiregrass Code Technology 2018-2022
 //  
 using System;
 using System.Collections.Concurrent;
@@ -86,7 +86,7 @@ namespace ObjectPool
             }
         }
 
-        public List<ObjectPoolMember> ObjectsList => objects.OfType<ObjectPoolMember>().ToList();
+        public IReadOnlyCollection<ObjectPoolMember> ObjectsList => objects.OfType<ObjectPoolMember>().ToList();
 
         private void LoadObjects()
         {
