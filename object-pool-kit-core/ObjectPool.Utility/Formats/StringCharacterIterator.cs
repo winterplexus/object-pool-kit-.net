@@ -1,7 +1,7 @@
 ﻿//
 //  StringCharacterIterator.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018
+//  Copyright (c) Wiregrass Code Technology 2018-2020
 //
 using System;
 
@@ -12,10 +12,6 @@ namespace ObjectPool.Utility
         public const char Done = '\uFFFF';
 
         private string text;
-
-        private int begin;
-        private int end;
-        private int position;
 
         public StringCharacterIterator(string text)
         {
@@ -59,82 +55,82 @@ namespace ObjectPool.Utility
                 throw new ArgumentNullException(nameof(textParameter));
             }
             text = textParameter;
-            begin = 0;
-            end = text.Length;
-            position = 0;
+            BeginIndex = 0;
+            EndIndex = text.Length;
+            Index = 0;
         }
 
         public char First()
         {
-            position = begin;
+            Index = BeginIndex;
             return Current();
         }
 
         public char Last()
         {
-            if (end != begin)
+            if (EndIndex != BeginIndex)
             {
-                position = end - 1;
+                Index = EndIndex - 1;
             }
             else
             {
-                position = end;
+                Index = EndIndex;
             }
             return Current();
         }
 
         public char SetIndex(int positionParameter)
         {
-            if (position < begin || (position > end))
+            if (Index < BeginIndex || (Index > EndIndex))
             {
                 throw new ArgumentNullException(nameof(positionParameter));
             }
-            position = positionParameter;
+            Index = positionParameter;
             return Current();
         }
 
         public char Current()
         {
-            if (position >= begin && (position < end))
+            if (Index >= BeginIndex && (Index < EndIndex))
             {
-                return text[position];
+                return text[Index];
             }
             return Done;
         }
 
         public char Next()
         {
-            if (position < end - 1)
+            if (Index < EndIndex - 1)
             {
-                position++;
-                return text[position];
+                Index++;
+                return text[Index];
             }
-            position = end;
+            Index = EndIndex;
             return Done;
         }
 
         public char Previous()
         {
-            if (position > begin)
+            if (Index > BeginIndex)
             {
-                position--;
-                return text[position];
+                Index--;
+                return text[Index];
             }
             return Done;
         }
 
-        public int BeginIndex => begin;
+        public int BeginIndex { get; private set; }
 
-        public int EndIndex => end;
+        public int EndIndex { get; private set; }
 
-        public int Index => position;
+        public int Index { get; private set; }
 
         private void SetParameters(string textParameter, int beginParameter, int endParameter, int positionParameter)
         {
             text = textParameter;
-            begin = beginParameter;
-            end = endParameter;
-            position = positionParameter;
+            BeginIndex = beginParameter;
+            EndIndex = endParameter;
+            Index = positionParameter;
         }
     }
 }

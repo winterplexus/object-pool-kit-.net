@@ -1,26 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <Company>Wiregrass Code Technology</Company>
-    <Product>Object Pool Kit</Product>
-    <Copyright>Copyright © 2018 Wiregrass Code Technology</Copyright>
-    <Description>Object Pool Kit: Utility Library</Description>
-    <Authors>Wiregrass Code Technology</Authors>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>NameKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Formats\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="2.0.1" />
-  </ItemGroup>
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Company>Wiregrass Code Technology</Company>
+        <Authors>Wiregrass Code Technology</Authors>
+        <Copyright>Copyright © 2018-2020 Wiregrass Code Technology</Copyright>
+        <Product>Object Pool Kit</Product>
+        <Description>Object Pool Kit: Utility Library</Description>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>NameKey.snk</AssemblyOriginatorKeyFile>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+        <FileVersion>1.1.0.0</FileVersion>
+        <Version>1.1.0.0</Version>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <CodeAnalysisRuleSet>ObjectPool.Utility.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <CodeAnalysisRuleSet>ObjectPool.Utility.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+    <ItemGroup>
+        <Folder Include="Formats\" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Windows.Compatibility" Version="3.0.0" />
+    </ItemGroup>
 </Project>

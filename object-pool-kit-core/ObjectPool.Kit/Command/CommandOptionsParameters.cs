@@ -1,11 +1,11 @@
 ﻿//
-//  Parameters.cs
+//  CommandOptionsParameters.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018
+//  Copyright (c) Wiregrass Code Technology 2018-2020
 //                        
 namespace ObjectPool.Kit
 {
-    public class CommandParameters
+    public class CommandOptionsParameters
     {
         public int NumberSimulations { get; set; }
         public int NumberParallelLoops { get; set; }

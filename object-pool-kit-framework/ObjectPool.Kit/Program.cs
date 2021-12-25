@@ -1,7 +1,7 @@
 ﻿//
 //  Program.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018
+//  Copyright (c) Wiregrass Code Technology 2018-2020
 //   
 using System;
 using System.Reflection;
@@ -20,7 +20,7 @@ namespace ObjectPool.Kit
         {
             DisplayVersion();
 
-            var parameters = new CommandParameters();
+            var parameters = new CommandOptionsParameters();
             if (CommandOptions.Parse(arguments, parameters))
             {
                 DisplayParameters(parameters);
@@ -33,7 +33,7 @@ namespace ObjectPool.Kit
             }
         }
 
-        public static void Simulation(CommandParameters parameters)
+        public static void Simulation(CommandOptionsParameters parameters)
         {
             if (parameters == null)
             {
@@ -109,7 +109,7 @@ namespace ObjectPool.Kit
             Console.Write(Environment.NewLine);
         }
 
-        public static void DisplayParameters(CommandParameters parameters)
+        public static void DisplayParameters(CommandOptionsParameters parameters)
         {
             if (parameters == null)
             {

@@ -1,7 +1,7 @@
 ﻿//
 //  ObjectPoolManager.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018
+//  Copyright (c) Wiregrass Code Technology 2018-2020
 //  
 using System;
 using System.Collections.Generic;

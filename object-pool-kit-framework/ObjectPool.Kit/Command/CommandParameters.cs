@@ -1,7 +1,7 @@
 ﻿//
 //  Parameters.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2015-18
+//  Copyright (c) Wiregrass Code Technology 2018
 //                        
 namespace ObjectPool.Kit
 {

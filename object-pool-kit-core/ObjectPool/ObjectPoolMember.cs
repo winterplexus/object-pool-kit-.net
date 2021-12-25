@@ -1,7 +1,7 @@
 ﻿//
 //  ObjectPoolMember.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018
+//  Copyright (c) Wiregrass Code Technology 2018-2020
 //       
 using System;
 using System.Globalization;
@@ -17,6 +17,8 @@ namespace ObjectPool
             Identifier = Guid.NewGuid();
             WhenCreated = DateTime.Now;
             WhenUpdated = WhenCreated;
+
+            // Pool object
             DisposablePoolMember = new DisposablePoolMember();
 
             ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object pool member ({0}) created", Identifier), LogLevel.Info);

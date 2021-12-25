@@ -1,7 +1,7 @@
 ﻿//
 //  NumberFormats.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018
+//  Copyright (c) Wiregrass Code Technology 2018-2020
 //
 using System;
 using System.Text;
@@ -49,26 +49,26 @@ namespace ObjectPool.Utility
             if (amount < 0)
             {
                 buffer.Append("Minus ");
-                amount = amount * -1;
+                amount *= -1;
             }
 
             var temporary = (int)(amount / 1E12);
             if (temporary > 0)
             {
                 buffer.Append(FormatGroup(temporary, "Trillion"));
-                amount = amount % 1E12;
+                amount %= 1E12;
             }
             temporary = (int)(amount / 1E9);
             if (temporary > 0)
             {
                 buffer.Append(FormatGroup(temporary, "Billion"));
-                amount = amount % 1E9;
+                amount %= 1E9;
             }
             temporary = (int)(amount / 1E6);
             if (temporary > 0)
             {
                 buffer.Append(FormatGroup(temporary, "Million"));
-                amount = amount % 1E6;
+                amount %= 1E6;
             }
             temporary = (int)(amount / 1E3);
             if (temporary > 0)

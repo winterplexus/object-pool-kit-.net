@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\CommandOptions.cs" />
-    <Compile Include="Command\CommandParameters.cs" />
+    <Compile Include="Command\CommandOptionsParameters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

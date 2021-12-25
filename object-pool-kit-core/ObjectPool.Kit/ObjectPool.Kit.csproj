@@ -1,30 +1,32 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <Copyright>Copyright © 2018 Wiregrass Code Technology</Copyright>
-    <Authors>Wiregrass Code Technology</Authors>
-    <Description>Object Pool Kit: Object Pool Management Demonstration Application</Description>
-    <Product>Object Pool Kit</Product>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>NameKey.snk</AssemblyOriginatorKeyFile>
-    <StartupObject>ObjectPool.Kit.Program</StartupObject>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>_DISPLAY_COPYRIGHT</DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ObjectPool\ObjectPool.csproj" />
-  </ItemGroup>
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Company>Wiregrass Code Technology</Company>
+        <Authors>Wiregrass Code Technology</Authors>
+        <Copyright>Copyright © 2018-2020 Wiregrass Code Technology</Copyright>
+        <Product>Object Pool Kit</Product>
+        <Description>Object Pool Kit: Object Pool Management Demonstration Application</Description>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>NameKey.snk</AssemblyOriginatorKeyFile>
+        <StartupObject>ObjectPool.Kit.Program</StartupObject>
+        <AssemblyVersion>1.1.0.0</AssemblyVersion>
+        <Version>1.2.0.0</Version>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>_DISPLAY_COPYRIGHT</DefineConstants>
+        <CodeAnalysisRuleSet>ObjectPool.Kit.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <CodeAnalysisRuleSet>ObjectPool.Kit.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0-beta3.final">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\ObjectPool\ObjectPool.csproj" />
+    </ItemGroup>
 </Project>
