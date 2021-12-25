@@ -4,7 +4,6 @@
 //  Copyright (c) Wiregrass Code Technology 2018-2021
 //        
 using System;
-using System.Globalization;
 using NLog;
 
 namespace ObjectPool.Log
@@ -20,7 +19,7 @@ namespace ObjectPool.Log
 
             var logger = LogManager.GetLogger("Manager");
 
-            logger.Info(CultureInfo.InvariantCulture, "{message}");
+            logger.Info("{message}");
         }
 
         public static void WriteManagerMessage(string message, LogLevel logLevel)
@@ -34,11 +33,11 @@ namespace ObjectPool.Log
 
             if (logLevel == LogLevel.Info)
             {
-                logger.Info(CultureInfo.InvariantCulture, $"manager: {message}");
+                logger.Info($"manager: {message}");
             }
             if (logLevel == LogLevel.Trace)
             {
-                logger.Trace(CultureInfo.InvariantCulture, $"manager: {message}");
+                logger.Trace($"manager: {message}");
             }
         }
 
@@ -53,11 +52,11 @@ namespace ObjectPool.Log
 
             if (logLevel == LogLevel.Info)
             {
-                logger.Info(CultureInfo.InvariantCulture, $"pool: {message}");
+                logger.Info($"pool: {message}");
             }
             if (logLevel == LogLevel.Trace)
             {
-                logger.Trace(CultureInfo.InvariantCulture, $"pool: {message}");
+                logger.Trace($"pool: {message}");
             }
         }
 
@@ -72,11 +71,11 @@ namespace ObjectPool.Log
 
             if (logLevel == LogLevel.Info)
             {
-                logger.Info(CultureInfo.InvariantCulture, $"counters: {message}");
+                logger.Info($"counters: {message}");
             }
             if (logLevel == LogLevel.Trace)
             {
-                logger.Trace(CultureInfo.InvariantCulture, $"counters: {message}");
+                logger.Trace($"counters: {message}");
             }
         }
     }

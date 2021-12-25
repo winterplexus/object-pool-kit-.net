@@ -4,7 +4,6 @@
 //  Copyright (c) Wiregrass Code Technology 2018-2021
 //
 using System;
-using System.Globalization;
 using NLog;
 using ObjectPool.Utility;
 
@@ -18,8 +17,8 @@ namespace ObjectPool.Log
         {
             var logger = LogManager.GetLogger("Events");
 
-            logger.Info(CultureInfo.InvariantCulture, $"source method (including namespace and class): {source}");
-            logger.Info(CultureInfo.InvariantCulture, $"message: {message}");
+            logger.Info($"source method (including namespace and class): {source}");
+            logger.Info($"message: {message}");
         }
 
         public static void WriteEvent(string source, string message, Exception exception)
@@ -31,28 +30,28 @@ namespace ObjectPool.Log
 
             var logger = LogManager.GetLogger("Events");
 
-            logger.Info(CultureInfo.InvariantCulture, $"source method (including namespace and class): {source}");
-            logger.Info(CultureInfo.InvariantCulture, $"message: {message}");
-            logger.Info(CultureInfo.InvariantCulture, $"exception type: {exception.GetType().Name}");
-            logger.Info(CultureInfo.InvariantCulture, $"exception message: {exception.Message}");
+            logger.Info($"source method (including namespace and class): {source}");
+            logger.Info($"message: {message}");
+            logger.Info($"exception type: {exception.GetType().Name}");
+            logger.Info($"exception message: {exception.Message}");
 
             if (exception.InnerException != null)
             {
-                logger.Info(CultureInfo.InvariantCulture, $"{singleIndent} inner exception type: {exception.InnerException.GetType().Name}");
-                logger.Info(CultureInfo.InvariantCulture, $"{singleIndent} inner exception message: {exception.InnerException.Message}");
+                logger.Info($"{singleIndent} inner exception type: {exception.InnerException.GetType().Name}");
+                logger.Info($"{singleIndent} inner exception message: {exception.InnerException.Message}");
             }
 
-            logger.Info(CultureInfo.InvariantCulture, $"exception stack trace: {ReplaceControlCharacters(exception.StackTrace)}");
+            logger.Info($"exception stack trace: {ReplaceControlCharacters(exception.StackTrace)}");
         }
 
         private static string ReplaceControlCharacters(string input)
         {
-            return string.IsNullOrEmpty(input) ? input : input.Replace(EscapeCharacters.Backspace, "", StringComparison.InvariantCulture).
-                                                               Replace(EscapeCharacters.FormFeed, " | ", StringComparison.InvariantCulture).
-                                                               Replace(EscapeCharacters.Linefeed, "", StringComparison.InvariantCulture).
-                                                               Replace(EscapeCharacters.CarriageReturn, "", StringComparison.InvariantCulture).
-                                                               Replace(EscapeCharacters.HorizontalTab, " ", StringComparison.InvariantCulture).
-                                                               Replace(EscapeCharacters.VerticalTab, " | ", StringComparison.InvariantCulture);
+            return string.IsNullOrEmpty(input) ? input : input.Replace(EscapeCharacters.Backspace, "").
+                                                               Replace(EscapeCharacters.FormFeed, " | ").
+                                                               Replace(EscapeCharacters.Linefeed, "").
+                                                               Replace(EscapeCharacters.CarriageReturn, "").
+                                                               Replace(EscapeCharacters.HorizontalTab, " ").
+                                                               Replace(EscapeCharacters.VerticalTab, " | ");
         }
     }
 }

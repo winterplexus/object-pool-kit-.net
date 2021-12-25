@@ -19,7 +19,7 @@ namespace ObjectPool.Kit
         private const char objectPoolSizeFlag = 'p';
         private const char objectUsageLimitFlag = 'u';
 
-        public static bool Parse(string[] arguments, CommandOptionsParameters parameters)
+        public static bool Parse(string[] arguments, CommandParameters parameters)
         {
             if (arguments == null || arguments.Length < 1)
             {
@@ -91,7 +91,7 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseNumberSimulations(IReadOnlyList<string> arguments, int i, CommandOptionsParameters parameters)
+        private static bool ParseNumberSimulations(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
         {
             if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
             {
@@ -102,7 +102,7 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseNumberParallelLoops(IReadOnlyList<string> arguments, int i, CommandOptionsParameters parameters)
+        private static bool ParseNumberParallelLoops(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
         {
             if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
             {
@@ -113,7 +113,7 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParsenWaitTimeBetweenSimulations(IReadOnlyList<string> arguments, int i, CommandOptionsParameters parameters)
+        private static bool ParsenWaitTimeBetweenSimulations(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
         {
             if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
             {
@@ -124,7 +124,7 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseObjectLifetime(IReadOnlyList<string> arguments, int i, CommandOptionsParameters parameters)
+        private static bool ParseObjectLifetime(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
         {
             if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
             {
@@ -135,7 +135,7 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseObjectPoolSize(IReadOnlyList<string> arguments, int i, CommandOptionsParameters parameters)
+        private static bool ParseObjectPoolSize(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
         {
             if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
             {
@@ -146,7 +146,7 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseObjectUsageLimit(IReadOnlyList<string> arguments, int i, CommandOptionsParameters parameters)
+        private static bool ParseObjectUsageLimit(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
         {
             if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
             {

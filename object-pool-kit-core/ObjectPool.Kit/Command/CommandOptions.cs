@@ -161,11 +161,12 @@ namespace ObjectPool.Kit
         {
             Console.WriteLine($"usage: {Process.GetCurrentProcess().ProcessName}.exe (options){Environment.NewLine}");
             Console.WriteLine($"options: -{numberSimulationFlag} <number of simulations>");
-            Console.WriteLine($"\t -{numberParallelLoopsFlag} <number of parallel loops>");
-            Console.WriteLine($"\t -{waitTimeBetweenSimulationsFlag} <wait time between simulations>");
-            Console.WriteLine($"\t -{objectLifetimeFlag} <object lifetime>");
-            Console.WriteLine($"\t -{objectPoolSizeFlag} <object pool size>");
-            Console.WriteLine($"\t -{objectUsageLimitFlag} <object usage limit>");
+            Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{numberParallelLoopsFlag} <number of parallel loops>");
+            Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{waitTimeBetweenSimulationsFlag} <wait time between simulations>");
+            Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{objectLifetimeFlag} <object lifetime>");
+            Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{objectPoolSizeFlag} <object pool size>");
+            Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{objectUsageLimitFlag} <object usage limit>");
+
         }
     }
 }

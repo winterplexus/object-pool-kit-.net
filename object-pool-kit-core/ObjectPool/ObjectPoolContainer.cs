@@ -72,7 +72,7 @@ namespace ObjectPool
 
                     if (value is ObjectPoolMember ObjectPoolMember)
                     {
-                        ManagerLog.WritePoolMessage("object ({ObjectPoolMember.Identifier}) returned", LogLevel.Trace);
+                        ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) returned", LogLevel.Trace);
                     }
                     else
                     {

@@ -18,7 +18,7 @@ namespace ObjectPool.Kit
         {
             DisplayVersion();
 
-            var parameters = new CommandOptionsParameters();
+            var parameters = new CommandParameters();
             if (CommandOptions.Parse(arguments, parameters))
             {
                 DisplayParameters(parameters);
@@ -31,7 +31,7 @@ namespace ObjectPool.Kit
             }
         }
 
-        public static void Simulation(CommandOptionsParameters parameters)
+        public static void Simulation(CommandParameters parameters)
         {
             if (parameters == null)
             {
@@ -107,7 +107,7 @@ namespace ObjectPool.Kit
             Console.Write(Environment.NewLine);
         }
 
-        public static void DisplayParameters(CommandOptionsParameters parameters)
+        public static void DisplayParameters(CommandParameters parameters)
         {
             if (parameters == null)
             {
