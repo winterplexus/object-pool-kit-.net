@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Copyright>Copyright © 2018 Wiregrass Code Technology</Copyright>
+    <Authors>Wiregrass Code Technology</Authors>
+    <Product>Object Pool Kit</Product>
+    <Description>Object Pool Kit: Log Library</Description>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>NameKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectPool.Utility\ObjectPool.Utility.csproj" />
+  </ItemGroup>
+
+</Project>
