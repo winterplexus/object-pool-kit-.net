@@ -1,10 +1,9 @@
 ﻿//
 //  ObjectPoolMember.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2021
 //       
 using System;
-using System.Globalization;
 using NLog;
 using ObjectPool.Log;
 
@@ -21,14 +20,14 @@ namespace ObjectPool
             // Pool object
             DisposablePoolMember = new DisposablePoolMember();
 
-            ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object pool member ({0}) created", Identifier), LogLevel.Info);
+            ManagerLog.WritePoolMessage($"object pool member ({Identifier}) created", LogLevel.Info);
         }
 
         ~ObjectPoolMember()
         {
             DisposablePoolMember?.Dispose();
 
-            ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object pool member ({0}) destroyed", Identifier), LogLevel.Info);
+            ManagerLog.WritePoolMessage($"object pool member ({Identifier}) destroyed", LogLevel.Info);
         }
 
         public Guid Identifier { get; }

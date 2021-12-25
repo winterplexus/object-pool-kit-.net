@@ -1,12 +1,11 @@
 ﻿//
 //  ObjectPoolContainer.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2021
 //  
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using NLog;
 using ObjectPool.Log;
@@ -45,13 +44,13 @@ namespace ObjectPool
                         {
                             if (CheckObjectLifetime(ObjectPoolMember))
                             {
-                                ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object ({0}) abandoned (lifetime > lifetime limit)", ObjectPoolMember.Identifier), LogLevel.Info);
+                                ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) abandoned (lifetime > lifetime limit)", LogLevel.Info);
                                 continue;
                             }
                         }
                         if (ObjectPoolMember != null)
                         {
-                            ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object ({0}) taken", ObjectPoolMember.Identifier), LogLevel.Trace);
+                            ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) taken", LogLevel.Trace);
                         }
                         else
                         {
@@ -71,10 +70,9 @@ namespace ObjectPool
                 {
                     objects.Add(value);
 
-                    var ObjectPoolMember = value as ObjectPoolMember;
-                    if (ObjectPoolMember != null)
+                    if (value is ObjectPoolMember ObjectPoolMember)
                     {
-                        ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object ({0}) returned", ObjectPoolMember.Identifier), LogLevel.Trace);
+                        ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) returned", LogLevel.Trace);
                     }
                     else
                     {
@@ -97,7 +95,7 @@ namespace ObjectPool
                 objects.Add(objectGenerator());
             }
 
-            ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object pool: {0} objects added", objectPoolSize), LogLevel.Info);
+            ManagerLog.WritePoolMessage($"object pool: {objectPoolSize} objects added", LogLevel.Info);
         }
 
         private T GenerateObject()
@@ -105,11 +103,10 @@ namespace ObjectPool
             var generatedObject = objectGenerator();
             if (generatedObject != null)
             {
-                var ObjectPoolMember = generatedObject as ObjectPoolMember;
-                if (ObjectPoolMember != null)
+                if (generatedObject is ObjectPoolMember ObjectPoolMember)
                 {
-                    ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object ({0}) generated", ObjectPoolMember.Identifier), LogLevel.Trace);
-                    ManagerLog.WritePoolMessage(string.Format(CultureInfo.InvariantCulture, "object ({0}) taken", ObjectPoolMember.Identifier), LogLevel.Trace);
+                    ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) generated", LogLevel.Trace);
+                    ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) taken", LogLevel.Trace);
                 }
             }
             return generatedObject;

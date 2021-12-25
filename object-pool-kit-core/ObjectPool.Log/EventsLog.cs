@@ -1,14 +1,12 @@
 ﻿//
 //  EventsLog.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2021
 //
 using System;
 using System.Globalization;
 using NLog;
 using ObjectPool.Utility;
-
-[assembly: CLSCompliant(true)]
 
 namespace ObjectPool.Log
 {
@@ -20,8 +18,8 @@ namespace ObjectPool.Log
         {
             var logger = LogManager.GetLogger("Events");
 
-            logger.Info(CultureInfo.InvariantCulture, "source method (including namespace and class): {0}", source);
-            logger.Info(CultureInfo.InvariantCulture, "message: {0}", message);
+            logger.Info(CultureInfo.InvariantCulture, $"source method (including namespace and class): {source}");
+            logger.Info(CultureInfo.InvariantCulture, $"message: {message}");
         }
 
         public static void WriteEvent(string source, string message, Exception exception)
@@ -33,18 +31,18 @@ namespace ObjectPool.Log
 
             var logger = LogManager.GetLogger("Events");
 
-            logger.Info(CultureInfo.InvariantCulture, "source method (including namespace and class): {0}", source);
-            logger.Info(CultureInfo.InvariantCulture, "message: {0}", message);
-            logger.Info(CultureInfo.InvariantCulture, "exception type: {0}", exception.GetType().Name);
-            logger.Info(CultureInfo.InvariantCulture, "exception message: {0}", exception.Message);
+            logger.Info(CultureInfo.InvariantCulture, $"source method (including namespace and class): {source}");
+            logger.Info(CultureInfo.InvariantCulture, $"message: {message}");
+            logger.Info(CultureInfo.InvariantCulture, $"exception type: {exception.GetType().Name}");
+            logger.Info(CultureInfo.InvariantCulture, $"exception message: {exception.Message}");
 
             if (exception.InnerException != null)
             {
-                logger.Info(CultureInfo.InvariantCulture, "{0} inner exception type: {1}", singleIndent, exception.InnerException.GetType().Name);
-                logger.Info(CultureInfo.InvariantCulture, "{0} inner exception message: {1}", singleIndent, exception.InnerException.Message);
+                logger.Info(CultureInfo.InvariantCulture, $"{singleIndent} inner exception type: {exception.InnerException.GetType().Name}");
+                logger.Info(CultureInfo.InvariantCulture, $"{singleIndent} inner exception message: {exception.InnerException.Message}");
             }
 
-            logger.Info(CultureInfo.InvariantCulture, "exception stack trace: {0}", ReplaceControlCharacters(exception.StackTrace));
+            logger.Info(CultureInfo.InvariantCulture, $"exception stack trace: {ReplaceControlCharacters(exception.StackTrace)}");
         }
 
         private static string ReplaceControlCharacters(string input)

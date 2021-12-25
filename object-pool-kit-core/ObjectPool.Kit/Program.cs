@@ -1,14 +1,12 @@
 ﻿//
 //  Program.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2021
 //   
 using System;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-
-[assembly: CLSCompliant(true)]
 
 namespace ObjectPool.Kit
 {
@@ -20,7 +18,7 @@ namespace ObjectPool.Kit
         {
             DisplayVersion();
 
-            var parameters = new CommandOptionsParameters();
+            var parameters = new CommandParameters();
             if (CommandOptions.Parse(arguments, parameters))
             {
                 DisplayParameters(parameters);
@@ -33,14 +31,14 @@ namespace ObjectPool.Kit
             }
         }
 
-        public static void Simulation(CommandOptionsParameters parameters)
+        public static void Simulation(CommandParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            Console.WriteLine("simulation: " + ++iteration);
+            Console.WriteLine($"simulation: {++iteration}");
 
             ObjectPoolManager.Instance.SetParameters(parameters.ObjectLifetime, parameters.ObjectPoolSize, parameters.ObjectUsageLimit);
 
@@ -54,7 +52,7 @@ namespace ObjectPool.Kit
                     }
                 }, cts.Token);
 
-                Parallel.For((long)0, parameters.NumberParallelLoops, (i, loopState) =>
+                Parallel.For((long)0, parameters.NumberParallelLoops, (_, loopState) =>
                 {
                     var poolObject = ObjectPoolManager.Instance.PoolObject;
                     ObjectPoolManager.Instance.ReturnPoolObject(poolObject, 1);
@@ -72,15 +70,15 @@ namespace ObjectPool.Kit
             var poolObjectsList = ObjectPoolManager.Instance.PoolObjectsList;
             if (poolObjectsList.Count > 0)
             {
-                Console.WriteLine("number of pool objects: {0}{1}", poolObjectsList.Count, Environment.NewLine);
+                Console.WriteLine($"number of pool objects: {poolObjectsList.Count}{Environment.NewLine}");
             }
 
             foreach (var poolObject in poolObjectsList)
             {
-                Console.WriteLine("pool object identifier: {0}", poolObject.Identifier);
-                Console.WriteLine("pool object when created: {0}", poolObject.WhenCreated);
-                Console.WriteLine("pool object when updated: {0}", poolObject.WhenUpdated);
-                Console.WriteLine("pool object member identifier: {0}{1}", poolObject.DisposablePoolMember.Identifier, Environment.NewLine);
+                Console.WriteLine($"pool object identifier: {poolObject.Identifier}");
+                Console.WriteLine($"pool object when created: {poolObject.WhenCreated}");
+                Console.WriteLine($"pool object when updated: {poolObject.WhenUpdated}");
+                Console.WriteLine($"pool object member identifier: {poolObject.DisposablePoolMember.Identifier}{Environment.NewLine}");
             }
 
             ObjectPoolManager.Instance.ReleasePoolObjects();
@@ -97,31 +95,31 @@ namespace ObjectPool.Kit
             var descriptionAttributes = assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
             if ((descriptionAttributes.Length > 0))
             {
-                Console.WriteLine("{0} v{1}", ((AssemblyDescriptionAttribute)descriptionAttributes[0]).Description, assembly.GetName().Version);
+                Console.WriteLine($"{((AssemblyDescriptionAttribute)descriptionAttributes[0]).Description} v{ assembly.GetName().Version}");
             }
 #if _DISPLAY_COPYRIGHT
             var copyrightAttributes = assembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
             if ((copyrightAttributes.Length > 0))
             {
-                Console.WriteLine("{0}", ((AssemblyCopyrightAttribute)copyrightAttributes[0]).Copyright);
+                Console.WriteLine($"{((AssemblyCopyrightAttribute)copyrightAttributes[0]).Copyright}");
             }
 #endif
             Console.Write(Environment.NewLine);
         }
 
-        public static void DisplayParameters(CommandOptionsParameters parameters)
+        public static void DisplayParameters(CommandParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            Console.WriteLine("number of simulations: {0}", parameters.NumberSimulations);
-            Console.WriteLine("number of parallel loops: {0}", parameters.NumberParallelLoops);
-            Console.WriteLine("wait time between simulations (in milliseconds): {0}", parameters.WaitTimeBetweenSimulations);
-            Console.WriteLine("object lifetime: {0}", parameters.ObjectLifetime);
-            Console.WriteLine("object pool size: {0}", parameters.ObjectPoolSize);
-            Console.WriteLine("object usage limit: {0}{1}", parameters.ObjectUsageLimit, Environment.NewLine);
+            Console.WriteLine($"number of simulations: {parameters.NumberSimulations}");
+            Console.WriteLine($"number of parallel loops: {parameters.NumberParallelLoops}");
+            Console.WriteLine($"wait time between simulations (in milliseconds): {parameters.WaitTimeBetweenSimulations}");
+            Console.WriteLine($"object lifetime: {parameters.ObjectLifetime}");
+            Console.WriteLine($"object pool size: {parameters.ObjectPoolSize}");
+            Console.WriteLine($"object usage limit: {parameters.ObjectUsageLimit}{Environment.NewLine}");
         }
     }
 }

@@ -1,22 +1,19 @@
 ﻿//
 //  ObjectPoolManager.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2021
 //  
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using NLog;
 using ObjectPool.Log;
-
-[assembly: CLSCompliant(true)]
 
 namespace ObjectPool
 {
     public sealed class ObjectPoolManager
     {
         private static volatile ObjectPoolManager objectPoolContainerManager;
-        private static readonly object objectPoolContainerManagerLock = new object();
+        private static readonly object objectPoolContainerManagerLock = new();
         private readonly ObjectPoolContainer<ObjectPoolMember> objectPoolContainer;
         private int objectLifetime;
         private int objectPoolSize;
@@ -62,7 +59,7 @@ namespace ObjectPool
             {
                 if (poolObject.UsageCount > objectUsageLimit)
                 {
-                    ManagerLog.WriteManagerMessage(string.Format(CultureInfo.InvariantCulture, "pool object ({0}) abandoned (usage > usage limit)", poolObject.Identifier), LogLevel.Info);
+                    ManagerLog.WriteManagerMessage($"pool object ({poolObject.Identifier}) abandoned (usage > usage limit)", LogLevel.Info);
                     return;
                 }
 

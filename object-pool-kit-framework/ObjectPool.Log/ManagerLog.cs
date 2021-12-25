@@ -1,7 +1,7 @@
 ﻿//
 //  ManagerLog.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2021
 //        
 using System;
 using System.Globalization;
@@ -20,7 +20,7 @@ namespace ObjectPool.Log
 
             var logger = LogManager.GetLogger("Manager");
 
-            logger.Info(CultureInfo.InvariantCulture, "{0}", message);
+            logger.Info(CultureInfo.InvariantCulture, "{message}");
         }
 
         public static void WriteManagerMessage(string message, LogLevel logLevel)
@@ -34,11 +34,11 @@ namespace ObjectPool.Log
 
             if (logLevel == LogLevel.Info)
             {
-                logger.Info(CultureInfo.InvariantCulture, "manager: {0}", message);
+                logger.Info(CultureInfo.InvariantCulture, $"manager: {message}");
             }
             if (logLevel == LogLevel.Trace)
             {
-                logger.Trace(CultureInfo.InvariantCulture, "manager: {0}", message);
+                logger.Trace(CultureInfo.InvariantCulture, $"manager: {message}");
             }
         }
 
@@ -53,11 +53,11 @@ namespace ObjectPool.Log
 
             if (logLevel == LogLevel.Info)
             {
-                logger.Info(CultureInfo.InvariantCulture, "pool: {0}", message);
+                logger.Info(CultureInfo.InvariantCulture, $"pool: {message}");
             }
             if (logLevel == LogLevel.Trace)
             {
-                logger.Trace(CultureInfo.InvariantCulture, "pool: {0}", message);
+                logger.Trace(CultureInfo.InvariantCulture, $"pool: {message}");
             }
         }
 
@@ -72,11 +72,11 @@ namespace ObjectPool.Log
 
             if (logLevel == LogLevel.Info)
             {
-                logger.Info(CultureInfo.InvariantCulture, "counters: {0}", message);
+                logger.Info(CultureInfo.InvariantCulture, $"counters: {message}");
             }
             if (logLevel == LogLevel.Trace)
             {
-                logger.Trace(CultureInfo.InvariantCulture, "counters: {0}", message);
+                logger.Trace(CultureInfo.InvariantCulture, $"counters: {message}");
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿//
 //  CommandOptions.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2020
+//  Copyright (c) Wiregrass Code Technology 2018-2021
 //
 using System;
 using System.Collections.Generic;
@@ -43,7 +43,7 @@ namespace ObjectPool.Kit
             {
                 if (arguments[index][0] != '-')
                 {
-                    Console.WriteLine("error-> option or option value is missing (argument index {0}): {1}", index, arguments[index]);
+                    Console.WriteLine($"error-> option or option value is missing (argument index {index}): {arguments[index]}");
                     return false;
                 }
                 if (arguments[index].Length <= 1)
@@ -78,7 +78,7 @@ namespace ObjectPool.Kit
                          invalidValue = ParseObjectUsageLimit(arguments, index, parameters);
                          break;
                     default:
-                         Console.WriteLine("error-> unknown option: {0}", option);
+                         Console.WriteLine($"error-> unknown option: {option}");
                          return false;
                 }
 
@@ -98,7 +98,7 @@ namespace ObjectPool.Kit
                 Console.WriteLine("error-> number of simulations value is missing");
                 return false;
             }
-            parameters.NumberSimulations = Assistant.GetNumberValue(arguments[i]);
+            parameters.NumberSimulations = Assistant.GetIntegerValue(arguments[i]);
             return true;
         }
 
@@ -109,7 +109,7 @@ namespace ObjectPool.Kit
                 Console.WriteLine("error-> number of parallel loops value is missing");
                 return false;
             }
-            parameters.NumberParallelLoops = Assistant.GetNumberValue(arguments[i]);
+            parameters.NumberParallelLoops = Assistant.GetIntegerValue(arguments[i]);
             return true;
         }
 
@@ -120,7 +120,7 @@ namespace ObjectPool.Kit
                 Console.WriteLine("error-> wait time between simulations value is missing");
                 return false;
             }
-            parameters.WaitTimeBetweenSimulations = Assistant.GetNumberValue(arguments[i]);
+            parameters.WaitTimeBetweenSimulations = Assistant.GetIntegerValue(arguments[i]);
             return true;
         }
 
@@ -131,7 +131,7 @@ namespace ObjectPool.Kit
                 Console.WriteLine("error-> object lifetime value is missing");
                 return false;
             }
-            parameters.ObjectLifetime = Assistant.GetNumberValue(arguments[i]);
+            parameters.ObjectLifetime = Assistant.GetIntegerValue(arguments[i]);
             return true;
         }
 
@@ -142,7 +142,7 @@ namespace ObjectPool.Kit
                 Console.WriteLine("error-> object pool size value is missing");
                 return false;
             }
-            parameters.ObjectPoolSize = Assistant.GetNumberValue(arguments[i]);
+            parameters.ObjectPoolSize = Assistant.GetIntegerValue(arguments[i]);
             return true;
         }
 
@@ -153,19 +153,19 @@ namespace ObjectPool.Kit
                 Console.WriteLine("error-> object usage limit value is missing");
                 return false;
             }
-            parameters.ObjectUsageLimit = Assistant.GetNumberValue(arguments[i]);
+            parameters.ObjectUsageLimit = Assistant.GetIntegerValue(arguments[i]);
             return true;
         }
 
         private static void DisplayUsage()
         {
-            Console.WriteLine("usage: {0}.exe (options)\r\n", Process.GetCurrentProcess().ProcessName);
-            Console.WriteLine("options: -{0} <number of simulations>", numberSimulationFlag);
-            Console.WriteLine("\t -{0} <number of parallel loops>", numberParallelLoopsFlag);
-            Console.WriteLine("\t -{0} <wait time between simulations>", waitTimeBetweenSimulationsFlag);
-            Console.WriteLine("\t -{0} <object lifetime>", objectLifetimeFlag);
-            Console.WriteLine("\t -{0} <object pool size>", objectPoolSizeFlag);
-            Console.WriteLine("\t -{0} <object usage limit>", objectUsageLimitFlag);
+            Console.WriteLine($"usage: {Process.GetCurrentProcess().ProcessName}.exe (options){Environment.NewLine}");
+            Console.WriteLine($"options: -{numberSimulationFlag} <number of simulations>");
+            Console.WriteLine($"\t -{numberParallelLoopsFlag} <number of parallel loops>");
+            Console.WriteLine($"\t -{waitTimeBetweenSimulationsFlag} <wait time between simulations>");
+            Console.WriteLine($"\t -{objectLifetimeFlag} <object lifetime>");
+            Console.WriteLine($"\t -{objectPoolSizeFlag} <object pool size>");
+            Console.WriteLine($"\t -{objectUsageLimitFlag} <object usage limit>");
         }
     }
 }

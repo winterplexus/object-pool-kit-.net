@@ -1,33 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <Company>Wiregrass Code Technology</Company>
+        <TargetFramework>net5.0</TargetFramework>
         <Authors>Wiregrass Code Technology</Authors>
-        <Copyright>Copyright © 2018-2020 Wiregrass Code Technology</Copyright>
+        <Company>Wiregrass Code Technology</Company>
         <Product>Object Pool Kit</Product>
+        <Copyright>Copyright © 2018-2021 Wiregrass Code Technology</Copyright>
         <Description>Object Pool Kit: Core Library</Description>
+        <AssemblyName>ObjectPool</AssemblyName>
+        <RootNamespace>ObjectPool</RootNamespace>
+        <PackageId>ObjectPool</PackageId>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>NameKey.snk</AssemblyOriginatorKeyFile>
-        <Version>1.1.0.0</Version>
-        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <Version>1.2.0.0</Version>
     </PropertyGroup>
+
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <CodeAnalysisRuleSet>ObjectPool.ruleset</CodeAnalysisRuleSet>
+      <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
     </PropertyGroup>
+
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <CodeAnalysisRuleSet>ObjectPool.ruleset</CodeAnalysisRuleSet>
+      <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
     </PropertyGroup>
+
     <ItemGroup>
         <Folder Include="Pool Objects\" />
     </ItemGroup>
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0-beta3.final">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="NLog.Extensions.Logging" Version="1.6.2" />
+      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="NLog" Version="4.7.9" />
     </ItemGroup>
+
     <ItemGroup>
-        <ProjectReference Include="..\ObjectPool.Log\ObjectPool.Log.csproj" />
+      <ProjectReference Include="..\ObjectPool.Log\ObjectPool.Log.csproj" />
+      <ProjectReference Include="..\ObjectPool.Utility\ObjectPool.Utility.csproj" />
     </ItemGroup>
+
 </Project>           
