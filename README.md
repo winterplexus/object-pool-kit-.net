@@ -11,4 +11,4 @@ The kit includes the following components:
 
 * Object pool log library using NLog logging platform.
 
-The tool kit is separated into two VisualStudio solutions: one for .NET 6 platform and one for .NET Framework platform.
+The tool kit is separated into two Visual Studio solutions: one for .NET 6 platform and one for .NET Framework (4.8) platform.
