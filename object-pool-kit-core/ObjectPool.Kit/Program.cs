@@ -1,7 +1,7 @@
 ﻿//
 //  Program.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2022
+//  Copyright (c) Code Construct System 2018-2024
 //   
 using System;
 using System.Reflection;
@@ -34,10 +34,7 @@ namespace ObjectPool.Kit
 
         public static void Simulation(CommandParameters parameters)
         {
-            if (parameters == null)
-            {
-                throw new ArgumentNullException(nameof(parameters));
-            }
+            ArgumentNullException.ThrowIfNull(parameters);
 
             Console.WriteLine($"simulation: {++iteration}");
 
@@ -96,24 +93,20 @@ namespace ObjectPool.Kit
             var descriptionAttributes = assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
             if ((descriptionAttributes.Length > 0))
             {
-                Console.WriteLine($"{((AssemblyDescriptionAttribute)descriptionAttributes[0]).Description} v{ assembly.GetName().Version}");
+                Console.WriteLine($"{((AssemblyDescriptionAttribute)descriptionAttributes[0]).Description} v{assembly.GetName().Version}");
             }
-#if _DISPLAY_COPYRIGHT
             var copyrightAttributes = assembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
             if ((copyrightAttributes.Length > 0))
             {
                 Console.WriteLine($"{((AssemblyCopyrightAttribute)copyrightAttributes[0]).Copyright}");
             }
-#endif
+
             Console.Write(Environment.NewLine);
         }
 
         public static void DisplayParameters(CommandParameters parameters)
         {
-            if (parameters == null)
-            {
-                throw new ArgumentNullException(nameof(parameters));
-            }
+            ArgumentNullException.ThrowIfNull(parameters);
 
             Console.WriteLine($"number of simulations: {parameters.NumberSimulations}");
             Console.WriteLine($"number of parallel loops: {parameters.NumberParallelLoops}");

@@ -1,8 +1,10 @@
 ﻿//
 //  DisposablePoolMember.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2022
+//  Copyright (c) Code Construct System 2018-2024
 //  
+using NLog;
+using ObjectPool.Log;
 using System;
 
 namespace ObjectPool
@@ -15,6 +17,8 @@ namespace ObjectPool
         {
             Identifier = Guid.NewGuid();
             disposedValue = false;
+
+            ManagerLog.WritePoolMessage($"disposable pool member created: {Identifier}", LogLevel.Trace);
         }
 
         public Guid Identifier { get; }
@@ -31,7 +35,7 @@ namespace ObjectPool
             {
                 if (disposing)
                 {
-                    // dispose resources (if applicable)
+                    ManagerLog.WritePoolMessage($"disposable pool member disposed: {Identifier}", LogLevel.Trace);
                 }
                 disposedValue = true;
             }

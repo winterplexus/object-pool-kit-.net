@@ -1,7 +1,7 @@
 ﻿//
 //  CommandOptions.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2022
+//  Copyright (c) Code Construct System 2018-2024
 //
 using System;
 using System.Collections.Generic;
@@ -34,8 +34,8 @@ namespace ObjectPool.Kit
 
             parameters.NumberSimulations = 2;
             parameters.NumberParallelLoops = 10;
-            parameters.WaitTimeBetweenSimulations = 10000;
-            parameters.ObjectLifetime = 100;
+            parameters.WaitTimeBetweenSimulations = 10000; // milliseconds
+            parameters.ObjectLifetime = 300;               // seconds
             parameters.ObjectPoolSize = 5;
             parameters.ObjectUsageLimit = 50;
 
@@ -66,7 +66,7 @@ namespace ObjectPool.Kit
                          invalidValue = ParseNumberParallelLoops(arguments, index, parameters);
                          break;
                     case waitTimeBetweenSimulationsFlag:
-                         invalidValue = ParsenWaitTimeBetweenSimulations(arguments, index, parameters);
+                         invalidValue = ParseWaitTimeBetweenSimulations(arguments, index, parameters);
                          break;
                     case objectLifetimeFlag:
                          invalidValue = ParseObjectLifetime(arguments, index, parameters);
@@ -113,7 +113,7 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParsenWaitTimeBetweenSimulations(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
+        private static bool ParseWaitTimeBetweenSimulations(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
         {
             if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
             {
@@ -163,10 +163,9 @@ namespace ObjectPool.Kit
             Console.WriteLine($"options: -{numberSimulationFlag} <number of simulations>");
             Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{numberParallelLoopsFlag} <number of parallel loops>");
             Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{waitTimeBetweenSimulationsFlag} <wait time between simulations>");
-            Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{objectLifetimeFlag} <object lifetime>");
+            Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{objectLifetimeFlag} <object lifetime (seconds)>");
             Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{objectPoolSizeFlag} <object pool size>");
             Console.WriteLine($"{EscapeCharacters.HorizontalTab} -{objectUsageLimitFlag} <object usage limit>");
-
         }
     }
 }

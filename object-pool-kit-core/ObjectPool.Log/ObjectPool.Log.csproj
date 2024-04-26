@@ -1,20 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Authors>Wiregrass Code Technology</Authors>
-        <Company>Wiregrass Code Technology</Company>
+    <PropertyGroup>        
+        <TargetFramework>net8.0</TargetFramework>
+        <Authors>Code Construct System</Authors>
+        <Company>Code Construct System</Company>
         <Product>Object Pool Kit</Product>
         <Description>Object pool kit log library</Description>
-        <Copyright>Copyright © 2018-2022 Wiregrass Code Technology</Copyright>
+        <Copyright>Copyright © 2018-2024 Code Construct System</Copyright>
         <AssemblyName>ObjectPool.Log</AssemblyName>
         <RootNamespace>ObjectPool.Log</RootNamespace>
-        <SignAssembly>true</SignAssembly>
-        <AssemblyOriginatorKeyFile>NameKey.snk</AssemblyOriginatorKeyFile>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
         <AnalysisLevel>latest</AnalysisLevel>
-        <Version>1.5.0.0</Version>
+        <Version>1.6.0.0</Version>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -26,12 +24,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
+      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="NLog" Version="5.0.0-preview.3" />
-      <PackageReference Include="NLog.Config" Version="4.7.13" />
+      <PackageReference Include="NLog" Version="5.2.8" />
     </ItemGroup>
 
     <ItemGroup>

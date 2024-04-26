@@ -1,7 +1,7 @@
 ﻿//
 //  EventsLog.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2022
+//  Copyright (c) Code Construct System 2018-2024
 //
 using System;
 using NLog;
@@ -16,6 +16,9 @@ namespace ObjectPool.Log
 
         public static void WriteEvent(string source, string message)
         {
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(message);
+
             var logger = LogManager.GetLogger("Events");
 
             logger.Info($"source method (including namespace and class): {source}");
@@ -24,10 +27,9 @@ namespace ObjectPool.Log
 
         public static void WriteEvent(string source, string message, Exception exception)
         {
-            if (exception == null)
-            {
-                throw new ArgumentNullException(nameof(exception));
-            }
+            ArgumentNullException.ThrowIfNull(source);
+            ArgumentNullException.ThrowIfNull(message);
+            ArgumentNullException.ThrowIfNull(exception);
 
             var logger = LogManager.GetLogger("Events");
 

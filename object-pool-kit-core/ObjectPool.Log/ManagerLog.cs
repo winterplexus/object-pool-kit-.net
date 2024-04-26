@@ -1,7 +1,7 @@
 ﻿//
 //  ManagerLog.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2022
+//  Copyright (c) Code Construct System 2018-2024
 //        
 using System;
 using NLog;
@@ -12,10 +12,7 @@ namespace ObjectPool.Log
     {
         public static void WriteMessage(string message)
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
+            ArgumentNullException.ThrowIfNull(message);
 
             var logger = LogManager.GetLogger("Manager");
 
@@ -24,10 +21,7 @@ namespace ObjectPool.Log
 
         public static void WriteManagerMessage(string message, LogLevel logLevel)
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
+            ArgumentNullException.ThrowIfNull(message);
 
             var logger = LogManager.GetLogger("Manager");
 
@@ -43,10 +37,7 @@ namespace ObjectPool.Log
 
         public static void WritePoolMessage(string message, LogLevel logLevel)
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
+            ArgumentNullException.ThrowIfNull(message);
 
             var logger = LogManager.GetLogger("Manager");
 
@@ -62,10 +53,7 @@ namespace ObjectPool.Log
 
         public static void WriteCountersMessage(string message, LogLevel logLevel)
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
+            ArgumentNullException.ThrowIfNull(message);
 
             var logger = LogManager.GetLogger("Manager");
 

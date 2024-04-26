@@ -1,7 +1,7 @@
 ﻿//
 //  ObjectPoolManager.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2022
+//  Copyright (c) Code Construct System 2018-2024
 //  
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace ObjectPool
     public sealed class ObjectPoolManager
     {
         private static volatile ObjectPoolManager objectPoolContainerManager;
-        private static readonly object objectPoolContainerManagerLock = new();
+        private static readonly object objectPoolContainerManagerLock = new object();
         private readonly ObjectPoolContainer<ObjectPoolMember> objectPoolContainer;
         private int objectLifetime;
         private int objectPoolSize;
@@ -46,6 +46,19 @@ namespace ObjectPool
 
         public void SetParameters(int lifetime, int poolSize, int usageLimit)
         {
+            if (lifetime < 1)
+            {
+                lifetime = 300;
+            }
+            if (poolSize < 1)
+            {
+                lifetime = 5;
+            }
+            if (usageLimit < 1)
+            {
+                usageLimit = 50;
+            }
+
             objectLifetime = lifetime;
             objectPoolSize = poolSize;
             objectUsageLimit = usageLimit;
@@ -57,7 +70,7 @@ namespace ObjectPool
             {
                 if (poolObject.UsageCount > objectUsageLimit)
                 {
-                    ManagerLog.WriteManagerMessage($"pool object ({poolObject.Identifier}) abandoned (usage > usage limit)", LogLevel.Info);
+                    ManagerLog.WriteManagerMessage($"object pool member abandoned: {poolObject.Identifier} (usage count is greater than usage limit:)", LogLevel.Info);
                     return;
                 }
 
@@ -69,7 +82,7 @@ namespace ObjectPool
             }
             else
             {
-                ManagerLog.WriteManagerMessage("pool object is null", LogLevel.Error);
+                ManagerLog.WriteManagerMessage("object pool member is null", LogLevel.Error);
             }
         }
 
@@ -77,14 +90,17 @@ namespace ObjectPool
 
         public void ReleasePoolObjects()
         {
+            var count = 0;
+
             var poolObjectsList = objectPoolContainer.ObjectsList;
 
             foreach (var poolObject in poolObjectsList)
             {
                 poolObject.DisposablePoolMember.Dispose();
+                count++;
             }
 
-            ManagerLog.WriteManagerMessage("pool objects released", LogLevel.Info);
+            ManagerLog.WriteManagerMessage($"object pool members released from pool: {count} objects", LogLevel.Info);
         }
     }
 }

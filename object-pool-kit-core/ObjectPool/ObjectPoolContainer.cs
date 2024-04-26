@@ -1,7 +1,7 @@
 ﻿//
 //  ObjectPoolContainer.cs
 //
-//  Copyright (c) Wiregrass Code Technology 2018-2022
+//  Copyright (c) Code Construct System 2018-2024
 //  
 using System;
 using System.Collections.Concurrent;
@@ -39,22 +39,22 @@ namespace ObjectPool
                 {
                     if (objects.TryTake(out T value))
                     {
-                        var ObjectPoolMember = value as ObjectPoolMember;
-                        if (ObjectPoolMember != null)
+                        var objectPoolMember = value as ObjectPoolMember;
+                        if (objectPoolMember != null)
                         {
-                            if (CheckObjectLifetime(ObjectPoolMember))
+                            if (CheckObjectLifetime(objectPoolMember))
                             {
-                                ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) abandoned (lifetime > lifetime limit)", LogLevel.Info);
+                                ManagerLog.WritePoolMessage($"object pool member life expired: {objectPoolMember.Identifier} (object life time exceeds life time limit)", LogLevel.Info);
                                 continue;
                             }
                         }
-                        if (ObjectPoolMember != null)
+                        if (objectPoolMember != null)
                         {
-                            ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) taken", LogLevel.Trace);
+                            ManagerLog.WritePoolMessage($"object taken: {objectPoolMember.Identifier})", LogLevel.Info);
                         }
                         else
                         {
-                            ManagerLog.WritePoolMessage("object (null) taken", LogLevel.Error);
+                            ManagerLog.WritePoolMessage("object is null", LogLevel.Error);
                         }
                     }
                     else
@@ -70,18 +70,18 @@ namespace ObjectPool
                 {
                     objects.Add(value);
 
-                    if (value is ObjectPoolMember ObjectPoolMember)
+                    if (value is ObjectPoolMember objectPoolMember)
                     {
-                        ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) returned", LogLevel.Trace);
+                        ManagerLog.WritePoolMessage($"object returned: ({objectPoolMember.Identifier})", LogLevel.Trace);
                     }
                     else
                     {
-                        ManagerLog.WritePoolMessage("object (null) returned", LogLevel.Error);
+                        ManagerLog.WritePoolMessage("object is not a pool member", LogLevel.Error);
                     }
                 }
                 else
                 {
-                    ManagerLog.WritePoolMessage("object returned is null", LogLevel.Error);
+                    ManagerLog.WritePoolMessage("object is null", LogLevel.Error);
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace ObjectPool
                 objects.Add(objectGenerator());
             }
 
-            ManagerLog.WritePoolMessage($"object pool: {objectPoolSize} objects added", LogLevel.Info);
+            ManagerLog.WritePoolMessage($"object pool loaded with {objectPoolSize} objects", LogLevel.Info);
         }
 
         private T GenerateObject()
@@ -105,8 +105,7 @@ namespace ObjectPool
             {
                 if (generatedObject is ObjectPoolMember ObjectPoolMember)
                 {
-                    ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) generated", LogLevel.Trace);
-                    ManagerLog.WritePoolMessage($"object ({ObjectPoolMember.Identifier}) taken", LogLevel.Trace);
+                    ManagerLog.WritePoolMessage($"object generated: {ObjectPoolMember.Identifier}", LogLevel.Trace);
                 }
             }
             return generatedObject;
@@ -118,9 +117,15 @@ namespace ObjectPool
 
             if (objectLifetime < 1)
             {
+                ManagerLog.WritePoolMessage($"object lifetime less than zero: {poolObject.Identifier}", LogLevel.Trace);
                 return false;
             }
-            return lifetimeSpan.Seconds > objectLifetime;
+            if (lifetimeSpan.Seconds > objectLifetime)
+            {
+                ManagerLog.WritePoolMessage($"object lifetime greater than {objectLifetime}: {poolObject.Identifier}", LogLevel.Trace);
+                return true;
+            }
+            return false;
         }
     }
 }
