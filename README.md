@@ -1,14 +1,26 @@
 Object Pool Applications for .NET
 =================================
 
-Application tool kit based on .NET 8 LTS platform for implementing object pools using intrinsic concurrency and custom object pool classes.
+Application tool kit based on .NET 9 platform for implementing object pools using intrinsic concurrency and custom object pool classes.
 
-The kit includes the following components:
+## Kit Components
 
-* Object pool library (custom object pool classes).
+| Components                  | Description                                                             |
+| :---------------------------|:------------------------------------------------------------------------|
+| Object pool library         | Object pool container, member, manager classes including custom objects |
+| Object pool kit application | Application to demonstrate how to implement object pools                |
+| Object pool log library     | Log library using NLog logging platform classes                         |
+| Object pool utility library | Utility classes to support above components                             |
 
-* Object pool kit application (to demonstrate how to implement object pools).
+## Kit Demonstration Options
 
-* Object pool log library using NLog logging platform.
+```
+usage: ObjectPool.Kit.exe (options)
 
-* Object pool utility for the above components.
+options: -s <number of simulations>
+         -t <number of parallel loops>
+         -w <wait time between simulations>
+         -l <object lifetime (seconds)>
+         -p <object pool size>
+         -u <object usage limit>
+```

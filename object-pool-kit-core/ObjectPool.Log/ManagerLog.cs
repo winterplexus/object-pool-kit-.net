@@ -1,7 +1,7 @@
 ﻿//
 //  ManagerLog.cs
 //
-//  Copyright (c) Code Construct System 2018-2024
+//  Copyright (c) Code Construct System 2018-2025
 //        
 using System;
 using NLog;

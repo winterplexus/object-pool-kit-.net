@@ -1,7 +1,7 @@
 ﻿//
 //  ObjectPoolMember.cs
 //
-//  Copyright (c) Code Construct System 2018-2024
+//  Copyright (c) Code Construct System 2018-2025
 //       
 using System;
 using NLog;
@@ -15,10 +15,8 @@ namespace ObjectPool
         {
             Identifier = Guid.NewGuid();
             WhenCreated = DateTime.Now;
-            WhenUpdated = WhenCreated;
-
-            // object pool member payload
-            DisposablePoolMember = new DisposablePoolMember();
+            WhenUpdated = WhenCreated;          
+            DisposablePoolMember = new DisposablePoolMember(); // object pool member payload
 
             ManagerLog.WritePoolMessage($"object pool member created: {Identifier}", LogLevel.Info);
         }

@@ -1,7 +1,7 @@
 ﻿//
 //  Program.cs
 //
-//  Copyright (c) Code Construct System 2018-2024
+//  Copyright (c) Code Construct System 2018-2025
 //   
 using System;
 using System.Reflection;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 [assembly: CLSCompliant(true)]
 namespace ObjectPool.Kit
 {
-    public static class Program
+    internal static class Program
     {
         private static int iteration;
 
@@ -60,9 +60,6 @@ namespace ObjectPool.Kit
                         loopState.Stop();
                     }
                 });
-
-                Console.WriteLine("press the enter key to exit.");
-                Console.ReadLine();
             }
 
             var poolObjectsList = ObjectPoolManager.Instance.PoolObjectsList;

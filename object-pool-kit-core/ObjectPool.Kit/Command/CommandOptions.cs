@@ -1,16 +1,15 @@
 ﻿//
 //  CommandOptions.cs
 //
-//  Copyright (c) Code Construct System 2018-2024
+//  Copyright (c) Code Construct System 2018-2025
 //
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using ObjectPool.Utility;
 
 namespace ObjectPool.Kit
 {
-    public static class CommandOptions
+    internal static class CommandOptions
     {
         private const char numberSimulationFlag = 's';
         private const char numberParallelLoopsFlag = 't';
@@ -35,7 +34,7 @@ namespace ObjectPool.Kit
             parameters.NumberSimulations = 2;
             parameters.NumberParallelLoops = 10;
             parameters.WaitTimeBetweenSimulations = 10000; // milliseconds
-            parameters.ObjectLifetime = 300;               // seconds
+            parameters.ObjectLifetime = 300; // seconds
             parameters.ObjectPoolSize = 5;
             parameters.ObjectUsageLimit = 50;
 
@@ -91,9 +90,9 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseNumberSimulations(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
+        private static bool ParseNumberSimulations(string[] arguments, int i, CommandParameters parameters)
         {
-            if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
+            if (arguments.Length <= i || string.IsNullOrEmpty(arguments[i]))
             {
                 Console.WriteLine("error-> number of simulations value is missing");
                 return false;
@@ -102,9 +101,9 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseNumberParallelLoops(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
+        private static bool ParseNumberParallelLoops(string[] arguments, int i, CommandParameters parameters)
         {
-            if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
+            if (arguments.Length <= i || string.IsNullOrEmpty(arguments[i]))
             {
                 Console.WriteLine("error-> number of parallel loops value is missing");
                 return false;
@@ -113,9 +112,9 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseWaitTimeBetweenSimulations(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
+        private static bool ParseWaitTimeBetweenSimulations(string[] arguments, int i, CommandParameters parameters)
         {
-            if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
+            if (arguments.Length <= i || string.IsNullOrEmpty(arguments[i]))
             {
                 Console.WriteLine("error-> wait time between simulations value is missing");
                 return false;
@@ -124,9 +123,9 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseObjectLifetime(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
+        private static bool ParseObjectLifetime(string[] arguments, int i, CommandParameters parameters)
         {
-            if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
+            if (arguments.Length <= i || string.IsNullOrEmpty(arguments[i]))
             {
                 Console.WriteLine("error-> object lifetime value is missing");
                 return false;
@@ -135,9 +134,9 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseObjectPoolSize(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
+        private static bool ParseObjectPoolSize(string[] arguments, int i, CommandParameters parameters)
         {
-            if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
+            if (arguments.Length <= i || string.IsNullOrEmpty(arguments[i]))
             {
                 Console.WriteLine("error-> object pool size value is missing");
                 return false;
@@ -146,9 +145,9 @@ namespace ObjectPool.Kit
             return true;
         }
 
-        private static bool ParseObjectUsageLimit(IReadOnlyList<string> arguments, int i, CommandParameters parameters)
+        private static bool ParseObjectUsageLimit(string[] arguments, int i, CommandParameters parameters)
         {
-            if (arguments.Count <= i || string.IsNullOrEmpty(arguments[i]))
+            if (arguments.Length <= i || string.IsNullOrEmpty(arguments[i]))
             {
                 Console.WriteLine("error-> object usage limit value is missing");
                 return false;

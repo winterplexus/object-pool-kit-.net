@@ -1,11 +1,11 @@
 ﻿//
 //  CommandParameters.cs
 //
-//  Copyright (c) Code Construct System 2018-2024
+//  Copyright (c) Code Construct System 2018-2025
 //                        
 namespace ObjectPool.Kit
 {
-    public class CommandParameters
+    internal sealed class CommandParameters
     {
         public int NumberSimulations { get; set; }
         public int NumberParallelLoops { get; set; }

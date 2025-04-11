@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>        
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <Authors>Code Construct System</Authors>
         <Company>Code Construct System</Company>
         <Product>Object Pool Kit</Product>
         <Description>Object pool kit core library</Description>
-        <Copyright>Copyright © 2018-2024 Code Construct System</Copyright>
+        <Copyright>Copyright © 2018-2025 Code Construct System</Copyright>
         <AssemblyName>ObjectPool</AssemblyName>
         <RootNamespace>ObjectPool</RootNamespace>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -28,11 +28,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
+      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="NLog" Version="5.2.8" />
+      <PackageReference Include="NLog" Version="5.4.0" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿//
 //  ObjectPoolContainer.cs
 //
-//  Copyright (c) Code Construct System 2018-2024
+//  Copyright (c) Code Construct System 2018-2025
 //  
 using System;
 using System.Collections.Concurrent;
@@ -21,7 +21,7 @@ namespace ObjectPool
 
         public ObjectPoolContainer(Func<T> generator, int lifetime, int poolSize)
         {
-            objects = new ConcurrentBag<T>();
+            objects = [];
             objectGenerator = generator ?? throw new ArgumentNullException(nameof(generator));
             objectLifetime = lifetime;
             objectPoolSize = poolSize;
